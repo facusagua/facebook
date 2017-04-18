@@ -29,7 +29,8 @@ STATUS 200
 Instalación
 **************************
 
-- Copiar todos los archivos del proyecto en su localhost.
+- Copiar todos los archivos del proyecto en su localhost dentro de la carpeta codigniter. 
+  Ej: http://localhost/codeigniter/(archivos descargados)
 - Crear una base de datos en Mysql con el nombre facebook e importar el archivo facebook.sql que se encuentra en la raiz del proyecto.
 
 *******************
