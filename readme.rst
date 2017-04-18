@@ -29,49 +29,20 @@ STATUS 200
 Instalación
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- Copiar todos los archivos del proyecto en su localhost.
+- Crear una base de datos en Mysql con el nombre facebook e importar el archivo facebook.sql que se encuentra en la raiz del proyecto.
 
 *******************
-Server Requirements
+Modo de prueba
 *******************
 
-PHP version 5.6 or newer is recommended.
+Para acceder desde el localhost se debe ingresar la siguientes url en el navegador:
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
-
-************
-Installation
-************
-
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
-
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community IRC <https://webchat.freenode.net/?channels=%23codeigniter>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+- Para perfiles públicos que no requieren la solicitud de token y aprobación del usuario se puede ingresar desde:
+  http://localhost/codeigniter/index.php/profile/facebook/(idPerfil)
+  Se muestra por pantalla los datos del usuario en formato json.-
+  
+- Para perfiles que requieren la solicitud de token y aprobación del usuario se debe ingresar desde:
+  http://localhost/codeigniter/index.php/profile/facebook
+  
+  Se redireccionara al login de Facebook y al accceder se muestra por pantalla los datos del usuario en formato json y además se almacenan en la tabla user de la base de datos.-  
