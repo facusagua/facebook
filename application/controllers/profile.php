@@ -10,40 +10,7 @@ class Profile extends CI_Controller
     }
     
     public function index(){
-		$userData = array();
-		
-		if($this->facebook->is_authenticated()){
-			$userProfile = $this->facebook->request('get', '/me?fields=id,name,about,age_range,birthday,education,context,cover,devices,email,favorite_athletes,first_name,gender,hometown,last_name,locale,location,work,friends{first_name,gender},religion,languages,albums,photos{link,picture},picture');
-            echo  $datos_json = json_encode($userProfile);
-            return $datos_json;
-            $userData['oauth_provider'] = 'facebook';
-            $userData['oauth_uid'] = $userProfile['id'];
-            $userData['first_name'] = $userProfile['first_name'];
-            $userData['last_name'] = $userProfile['last_name'];
-            $userData['email'] = $userProfile['email'];
-            $userData['gender'] = $userProfile['gender'];
-            $userData['locale'] = $userProfile['locale'];
-            $userData['profile_url'] = 'https://www.facebook.com/'.$userProfile['id'];
-            $userData['picture_url'] = $userProfile['picture']['data']['url'];
-            $userData['datos_json'] = $datos_json;
-			
-            $userID = $this->user->checkUser($userData);
-			
-			if(!empty($userID)){
-                $data['userData'] = $userData;
-                $this->session->set_userdata('userData',$userData);
-            } else {
-               $data['userData'] = array();
-            }
-			
-			$data['logoutUrl'] = $this->facebook->logout_url();
-		}else{
-            $fbuser = '';
-			
-			$data['authUrl'] =  $this->facebook->login_url();
-        }
-		
-		$this->load->view('user_authentication/index',$data);
+		$this->load->view('user_authentication/index');
     }
     
     public function facebook($endpoint){
@@ -56,6 +23,7 @@ class Profile extends CI_Controller
         else{
         if($this->facebook->is_authenticated()){
 			$userProfile = $this->facebook->request('get', '/me?fields=id,name,about,age_range,birthday,education,context,cover,devices,email,favorite_athletes,first_name,gender,hometown,last_name,locale,location,work,friends{first_name,gender},religion,languages,albums,photos{link,picture},picture');
+            echo "Autenticado"; 
             echo $datos_json = json_encode($userProfile);
             
             $userData['oauth_provider'] = 'facebook';
@@ -90,6 +58,6 @@ class Profile extends CI_Controller
 	public function logout() {
         $this->facebook->destroy_session();
 		$this->session->unset_userdata('userData');
-		redirect('../profile');
+		redirect('../profile/facebook');
     }
 }
